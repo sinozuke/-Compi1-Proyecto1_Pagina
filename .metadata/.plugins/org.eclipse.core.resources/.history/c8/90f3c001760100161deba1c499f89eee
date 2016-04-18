@@ -1,0 +1,20 @@
+<?php
+echo "<html>";
+echo "<body>";
+$string = file_get_contents('backlog.json');
+
+$json = json_decode($string,true);
+foreach ($json['datos_tiendas'] as $datos_tiendas)
+{
+	echo "<p>";
+	echo "<h1>Tienda:". $id['Nombre'] ."</h1><br>";
+	echo "Codigo:". $id['codigo'] ."<br>";
+	echo "Propietario:". $id['propietario'] ."<br>";
+	echo "Dirreccion:". $id['Dirreccion'] ."<br>";
+	echo "Telefono:". $id['telefono'] ."<br>";
+	echo "<img src='data:image/jpg;base64,".$id['img']." />";
+	echo "</p>";
+};
+echo "</body";
+echo "</html>";
+?>

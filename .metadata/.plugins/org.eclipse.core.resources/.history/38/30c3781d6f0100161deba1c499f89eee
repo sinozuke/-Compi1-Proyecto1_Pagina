@@ -1,0 +1,11 @@
+<?php
+$string = file_get_contents('backlog.json');
+
+$json = json_decode($string);
+foreach ($json['datos_tiendas'] as $objeto)
+{
+	echo "Tienda:". $objeto['id'] ."\n";
+};
+print_r($json);
+
+?>

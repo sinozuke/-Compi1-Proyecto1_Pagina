@@ -1,0 +1,40 @@
+<?php
+echo "<html>";
+echo "<body>";
+$string = file_get_contents('backlog.json');
+
+$json = json_decode($string,true);
+foreach ($json['datos_tiendas'] as $datos_tiendas)
+{
+	if($datos_tiendas!=null){
+		echo "<p>";
+		echo "<h1>Tienda:". $datos_tiendas['Nombre'] ."</h1><br>";
+		echo "<img src='data:image/jpg;base64,".$datos_tiendas['img']." /><br>";
+		echo "Codigo:". $datos_tiendas['codigo'] ."<br>";
+		echo "Propietario:". $datos_tiendas['propietario'] ."<br>";
+		echo "Dirreccion:". $datos_tiendas['Dirreccion'] ."<br>";
+		echo "Telefono:". $datos_tiendas['telefono'] ."<br>";
+		echo "</p>";
+		foreach ($json['datos_productos'] as $datos_productos){
+			if($datos_productos!=null){
+				if($datos_productos['sucursal']==datos_tiendas['codigo']){
+					echo "<dl>";
+						echo "<dt>".$datos_productos['Nombre']."</dt>";
+						echo "<dd>Codigo- ".$datos_productos['id']."<dd>";
+						echo "<dd>Marca- ".$datos_productos['marca']."<dd>";
+						echo "<dd>Color- ".$datos_productos['color']."<dd>";
+						echo "<dd>Cantidad- ".$datos_productos['cantidad']."<dd>";
+						echo "<dd>Tamaño- ".$datos_productos['tamaño']."<dd>";
+						echo "<dd>Sucursal- ".$datos_productos['sucursal']."<dd>";
+						if($datos_productos['img']!="vacio"){
+							echo "<img src='data:image/jpg;base64,".$datos_productos['img']." /><br>";
+						}
+					echo "</dl>";
+				}
+			}
+		};
+	}
+};
+echo "</body";
+echo "</html>";
+?>

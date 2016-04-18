@@ -1,0 +1,8 @@
+<?php
+$string = file_get_contents('backlog.json');
+
+$json = json_decode($string);
+
+print_r($json);
+
+?>
